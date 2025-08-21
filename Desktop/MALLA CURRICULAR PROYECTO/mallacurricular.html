@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .curso { border: 1px solid #ccc; padding: 8px; margin: 5px; display: inline-block; }
+    .bloqueado { background: #fdd; }
+    .disponible { background: #dfd; }
+    .aprobado { background: #bbf; text-decoration: line-through; }
+    .periodo { margin-bottom: 20px; }
+    .periodo-title { font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Ingeniería en Sistemas</h1>
+  <p>Marca las clases que ya pasaste. Las demás se desbloquearán si cumples los requisitos.</p>
+
+  <div id="malla"></div>
+
+  <script>
+    // Estructura por años y periodos
+    const malla = {
+      "Primer Año": {
+        "Primer Periodo": [
+          { codigo:"ISC-101", nombre:"Introducción a Ingeniería en Sistemas", requisitos:[] },
+          { codigo:"EG-011", nombre:"ESPAÑOL GENERAL", requisitos:[] },
+          { codigo:"MM-110", nombre:"Matemática I", requisitos:[] },
+          { codigo:"SC-101", nombre:"Sociología", requisitos:[] },
+          { codigo:"IN-101", nombre:"Inglés I", requisitos:[] }
+        ],
+        "Segundo Periodo": [
+          { codigo:"ISC-102", nombre:"Programación Estructurada", requisitos:["ISC-101"] },
+          { codigo:"FF-101", nombre:"Filosofia", requisitos:[] },
+          { codigo:"MM-111", nombre:"Geometria y Trigonometria", requisitos:[] },
+          { codigo:"IN-102", nombre:"Inglés II", requisitos:["IN-101"] }
+        ],
+        "Tercer Periodo": [
+          { codigo:"ISC-103", nombre:"Programación Orientada a Objetos", requisitos:["ISC-102"] },
+          { codigo:"IN-103", nombre:"Inglés III", requisitos:["IN-102"] },
+          { codigo:"MM-201", nombre:"Cálculo I", requisitos:["MM-110","MM-111"] },
+          { codigo:"MM-211", nombre:"Vectores y Matrices", requisitos:["MM-110","MM-111"] }
+        ]
+      },
+      "Segundo Año": {
+        "Primer Periodo": [
+          { codigo:"ISC-221", nombre:"Estructuras de Datos", requisitos:["ISC-103"] },
+          { codigo:"MM-240", nombre:"Matemáticas Discretas", requisitos:["MM-110"] },
+          { codigo:"FS-100", nombre:"Filosofía General I", requisitos:[] },
+          { codigo:"HI-101", nombre:"Historia de Honduras", requisitos:[] }
+        ],
+        "Segundo Periodo": [
+          { codigo:"ISC-305", nombre:"Programación Web", requisitos:["ISC-221"] },
+          { codigo:"ISC-306", nombre:"Compiladores", requisitos:["ISC-221"] },
+          { codigo:"ISC-336", nombre:"Sistemas Operativos", requisitos:["ISC-221"] },
+          { codigo:"ISC-204", nombre:"Técnicas de Programación", requisitos:["ISC-103"] },
+          { codigo:"FS-200", nombre:"Filosofía General II", requisitos:["FS-100"] },
+          { codigo:"HU-101", nombre:"Optativa II: Campo de las Humanidades", requisitos:[] }
+        ],
+        "Tercer Periodo": [
+          { codigo:"ISC-408", nombre:"Ingeniería de Software", requisitos:["ISC-305","ISC-306","ISC-336"] },
+          { codigo:"MM-202", nombre:"Cálculo II", requisitos:["MM-201","MM-211"] },
+          { codigo:"AGE-102", nombre:"Administración", requisitos:[] },
+          { codigo:"IE-326", nombre:"Instalaciones Eléctricas para Centros de Datos", requisitos:["MM-211","ISC-103"] }
+        ]
+      }
+      // Agrega más años y periodos según tu malla curricular
+    };
+
+    let aprobadas = [];
+    function toggle(codigo) {
+      if (aprobadas.includes(codigo)) {
+        aprobadas = aprobadas.filter(c => c !== codigo);
+      } else {
+        aprobadas.push(codigo);
+      }
+      render();
+    }
+
+    function render(){
+      const div = document.getElementById("malla");
+      div.innerHTML = "";
+
+      for (const año in malla) {
+        // Título del año
+        const titulo = document.createElement("h2");
+        titulo.textContent = año;
+        div.appendChild(titulo);
+
+        for (const periodo in malla[año]) {
+          const periodoDiv = document.createElement("div");
+          periodoDiv.className = "periodo";
+          const periodoTitle = document.createElement("div");
+          periodoTitle.className = "periodo-title";
+          periodoTitle.textContent = periodo;
+          periodoDiv.appendChild(periodoTitle);
+
+          malla[año][periodo].forEach(curso => {
+            let estado = "bloqueado";
+            if (aprobadas.includes(curso.codigo)) {
+              estado = "aprobado";
+            } else if (curso.requisitos.every(r => aprobadas.includes(r))) {
+              estado = "disponible";
+            }
+
+            const el = document.createElement("div");
+            el.className = "curso " + estado;
+            el.innerHTML = `
+              <label>
+                <input type="checkbox" ${aprobadas.includes(curso.codigo)?"checked":""}
+                  onchange="toggle('${curso.codigo}')">
+                <b>${curso.codigo}</b> - ${curso.nombre}
+                <br><small>Requisitos: ${curso.requisitos.length? curso.requisitos.join(", "):"Ninguno"}</small>
+              </label>
+            `;
+            periodoDiv.appendChild(el);
+          });
+
+          div.appendChild(periodoDiv);
+        }
+      }
+    }
+
+    window.toggle = toggle;
+    render();
+  </script>
+</body>
+</html>
