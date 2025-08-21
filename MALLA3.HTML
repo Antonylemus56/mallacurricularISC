@@ -1,0 +1,242 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <title>Malla Curricular - Ingeniería en Sistemas </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #EDE9E3;
+            margin: 0;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            color: #241F19;
+        }
+        .filtro-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        select {
+            font-size: 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .semestre {
+            background: #FFF;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .semestre h2 {
+            margin-top: 0;
+            color: #87816E;
+        }
+        .materia {
+            background: #E7D7C9;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 8px;
+            display: inline-block;
+            cursor: pointer;
+            transition: background 0.3s;
+            color: #241F19;
+        }
+        .materia.aprobada {
+            background: #BEBF6E;
+            text-decoration: line-through;
+            color: #666;
+        }
+        .materia.habilitada {
+            background: #A7C7E7 !important;
+        }
+        .requisito {
+            font-size: 0.8em;
+            color: #555;
+        }
+        #contador {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #241F19;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Malla Curricular - Ingeniería en Sistemas Computacionales</h1>
+    
+    <div id="contador">Clases Aprobadas: 0 / 53 </div>
+
+    <div class="semestre">
+        <h2>Primer año: <br>
+            Primer Período</h2>
+        <div class="materia" id="ISC-101" data-requisitos="">ISC-101 - Introducción a la Ingeniería en Sistemas Computacionales <br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="EG-011" data-requisitos="">EG-011 - Español General I<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="MM-110" data-requisitos="">MM-110 - Matemática I<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="SC-101" data-requisitos="">SC-101 - Sociología<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="IN-101" data-requisitos="">IN-101 - Inglés I<br><span class="requisito">Requisito: Ninguno</span></div>
+    
+
+    
+        <h2> Segundo Período</h2>
+        <div class="materia" id="ISC-102" data-requisitos="ISC-101">ISC-102 - Programación Estructurada <br><span class="requisito">Requisito: ISC-101</span></div>
+        <div class="materia" id="FF-101" data-requisitos="">FF-101 - Filosofía<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="MM-111" data-requisitos="">MM-111 - Geometría y Trigonometría<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="IN-102" data-requisitos="IN-101">IN-102 - Inglés II<br><span class="requisito">Requisito: IN-101</span></div>
+    
+
+    
+        <h2>Tercer Período</h2>
+        <div class="materia" id="ISC-103" data-requisitos="ISC-102">ISC-103 - Programación Orientada a Objetos<br><span class="requisito">Requisito: ISC-102</span></div>
+        <div class="materia" id="MM-201" data-requisitos="MM-110,MM-111">MM-201 - Cálculo I<br><span class="requisito">Requisito: MM-110, MM-111</span></div>
+        <div class="materia" id="MM-211" data-requisitos="MM-110">MM-211 - Vectores y Matrices<br><span class="requisito">Requisito: MM-110</span></div>
+        <div class="materia" id="IN-103" data-requisitos="IN-102">IN-103 - Inglés III<br><span class="requisito">Requisito: IN-102</span></div>
+    </div>
+    
+    <div class="semestre">
+        <h2>Segundo Año:<br> Primer Período</h2>
+        <div class="materia" id="MM-420" data-requisitos="MM-110">MM-420 - Matemática Discreta<br><span class="requisito">Requisito: MM-110 </span></div>
+        <div class="materia" id="MM-202" data-requisitos="MM-201">MM-202 - Cálculo II<br><span class="requisito">Requisito: MM-201</span></div>
+        <div class="materia" id="FS-100" data-requisitos="MM-201,MM-211">FS-100 - Física I<br><span class="requisito">Requisito: MM-201, MM-211</span></div>
+        <div class="materia" id="HH-101" data-requisitos="">HH-101 - Historia de Honduras<br><span class="requisito">Requisito: Ninguno</span></div>
+    
+
+    
+        <h2>Segundo Período</h2>
+        <div class="materia" id="ISC-204" data-requisitos="ISC-103">ISC-204 - Paradigmas de Programación <br><span class="requisito">Requisito: ISC-103</span></div>
+        <div class="materia" id="MM-401" data-requisitos="MM-202">MM-401 - Estadística<br><span class="requisito">Requisito: MM-202</span></div>
+        <div class="materia" id="FS-200" data-requisitos="FS-100">FS-200 - Física II<br><span class="requisito">Requisito: FS-100</span></div>
+        <div class="materia" id="OPT-HUM" data-requisitos="">Optativa II: Campo de las Humanidades<br><span class="requisito">Requisito: Ninguno</span></div>
+   
+    
+    
+        <h2>Tercer Período</h2>
+        <div class="materia" id="OPT-ART" data-requisitos="">Optativa III: Campo de las Artes y del Deporte<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="ISC-211" data-requisitos="MM-211">ISC-211 - Estructura de Datos<br><span class="requisito">Requisito: ISC-103, MM-211</span></div>
+        <div class="materia" id="AGE-102" data-requisitos="">AGE-102 - Administración I<br><span class="requisito">Requisito: MM-401</span></div>
+        <div class="materia" id="IE-326" data-requisitos="FS-200">IE-326 - Instalaciones Eléctricas para Centros de Datos<br><span class="requisito">Requisito: FS-200</span></div>
+    </div>
+
+    <div class="semestre">
+        <h2>Tercer Año: <br> Primer Período</h2>
+        <div class="materia" id="ISC-321" data-requisitos="ISC-211">ISC-321 - Fundamentos de Base de Datos <br><span class="requisito">Requisito: ISC-211</span></div>
+        <div class="materia" id="ISC-351" data-requisitos="AGE-102">ISC-351 - Contabilidad Financiera<br><span class="requisito">Requisito: AGE-102</span></div>
+        <div class="materia" id="ISC-331" data-requisitos="IE-326">ISC-331 - Redes de Datos I<br><span class="requisito">Requisito: IE-326</span></div>
+        <div class="materia" id="ISC-333" data-requisitos="ISC-211">ISC-333 - Sistemas Operativos I<br><span class="requisito">Requisito: ISC-211</span></div>
+   
+        <h2> Segundo Período</h2>
+        <div class="materia" id="ISC-312" data-requisitos="ISC-211,ISC-204">ISC-312 - Teoría de la Computación <br><span class="requisito">Requisito: ISC-211, ISC-204</span></div>
+        <div class="materia" id="ISC-341" data-requisitos="ISC-351">ISC-341 - Sistemas de Información<br><span class="requisito">Requisito: ISC-351</span></div>
+        <div class="materia" id="ISC-332" data-requisitos="ISC-331">ISC-332 - Redes de Datos II<br><span class="requisito">Requisito: ISC-331</span></div>
+        <div class="materia" id="ISC-334" data-requisitos="ISC-333">ISC-334 - Sistemas Operativos II<br><span class="requisito">Requisito: ISC-333</span></div>
+    
+        <h2> Tercer Período</h2>
+        <div class="materia" id="ISC-305" data-requisitos="ISC-321">ISC-305 - Programación Web <br><span class="requisito">Requisito: ISC-321</span></div>
+        <div class="materia" id="ISC-313" data-requisitos="ISC-312">ISC-313 - Compiladores<br><span class="requisito">Requisito: ISC-312</span></div>
+        <div class="materia" id="ISC-306" data-requisitos="ISC-341">ISC-306 - Análisis de Requerimientos<br><span class="requisito">Requisito: ISC-341</span></div>
+        <div class="materia" id="ISC-336" data-requisitos="ISC-334">ISC-336 - Diseño Digital<br><span class="requisito">Requisito: ISC-334</span></div>
+    </div>
+
+    <div class="semestre">
+        <h2>Cuarto Año: <br> 
+            Primer Período</h2>
+        <div class="materia" id="ISC-407" data-requisitos="ISC-305">ISC-407 - Programación Móvil<br><span class="requisito">Requisito: ISC-305</span></div>
+        <div class="materia" id="ISC-414" data-requisitos="ISC-313,MM-401">ISC-414 - Inteligencia Artificial<br><span class="requisito">Requisito: ISC-313,MM-401</span></div>
+        <div class="materia" id="ISC-435" data-requisitos="ISC-334">ISC-435 - Administración de Servidores<br><span class="requisito">Requisito: ISC-334</span></div>
+        <div class="materia" id="ISC-437" data-requisitos="ISC-336">ISC-437 - Arquitectura de Computadoras<br><span class="requisito">Requisito: ISC-336</span></div>
+  
+        <h2> Segundo Período</h2>
+        <div class="materia" id="ISC-408" data-requisitos="ISC-407">ISC-408 - Ingeniería del Software<br><span class="requisito">Requisito: ISC-407</span></div>
+        <div class="materia" id="ISC-422" data-requisitos="ISC-321">ISC-422 - Administración de Base de Datos<br><span class="requisito">Requisito: ISC-321</span></div>
+        <div class="materia" id="ISC-442" data-requisitos="ISC-435">ISC-442 - Seguridad Informática<br><span class="requisito">Requisito: ISC-435</span></div>
+        <div class="materia" id="ISC-443" data-requisitos="ISC-306">ISC-443 - Industria de TI<br><span class="requisito">Requisito: ISC-306</span></div>
+
+        <h2> Tercer Período</h2>
+        <div class="materia" id="ISC-409" data-requisitos="ISC-408">ISC-409 - Calidad de Software<br><span class="requisito">Requisito: ISC-408</span></div>
+        <div class="materia" id="ISC-423" data-requisitos="ISC-422">ISC-423 - Ciencia de Datos<br><span class="requisito">Requisito: ISC-422</span></div>
+        <div class="materia" id="ISC-415" data-requisitos="ISC-409,ISC-437">ISC-415 - Tecnologías Emergentes<br><span class="requisito">Requisito: ISC-409,ISC-437</span></div>
+        <div class="materia" id="ISC-445" data-requisitos="ISC-443,ISC-442">ISC-445 - Proyectos de TI<br><span class="requisito">Requisito: ISC-443,ISC-442</span></div>
+    </div>
+    
+    <div class="semestre">
+        <h2>Quinto Año: <br>
+            Primer Período</h2>
+        <div class="materia" id="OPT-NAT-1" data-requisitos="">Optativa IV: Campo de las Ciencias Naturales<br><span class="requisito">Requisito: Ninguno</span></div>
+        <div class="materia" id="ISC-552" data-requisitos="ISC-415,ISC-445,ISC-423">ISC-552 - Seminario de Investigación<br><span class="requisito">Requisito: ISC-415,ISC-445,ISC-423</span></div>
+        <div class="materia" id="ISC-544" data-requisitos="ISC-423">ISC-544 - Auditoría Informática<br><span class="requisito">Requisito: ISC-423</span></div>
+        <div class="materia" id="ISC-546" data-requisitos="ISC-442,ISC-306">ISC-546 - Ejecución de Proyectos de TI<br><span class="requisito">Requisito: ISC-442,ISC-306</span></div>
+    
+        <h2> Practica Profesional </h2>
+        <div class="materia" id="ISC-123" data-requisitos="ISC-552">ISC-123 - Práctica Profesional Supervisada<br><span class="requisito">Requisito: Haber completado todos los espacios de prerrequisitos del Plan de Estudios.</span></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const materias = document.querySelectorAll('.materia');
+            const semestres = document.querySelectorAll('.semestre');
+            const filtro = document.getElementById('filtroPeriodo');
+            const contador = document.getElementById('contador');
+
+            function actualizarEstadoMaterias() {
+                const aprobadas = new Set([...materias].filter(m => m.classList.contains('aprobada')).map(m => m.id));
+                updateCounter();
+
+                materias.forEach(materia => {
+                    const requisitos = materia.dataset.requisitos
+                        .split(',')
+                        .map(r => r.trim())
+                        .filter(r => r);
+
+                    const aprobadosTodos = requisitos.every(req => aprobadas.has(req));
+
+                    materia.classList.remove('habilitada');
+                    if (!materia.classList.contains('aprobada') && aprobadosTodos) {
+                        materia.classList.add('habilitada');
+                    }
+                });
+            }
+
+            function updateCounter() {
+                const numAprobadas = document.querySelectorAll('.materia.aprobada').length;
+                contador.textContent = `Clases Aprobadas: ${numAprobadas} / 53`;
+            }
+
+            materias.forEach(el => {
+                el.addEventListener('click', () => {
+                    const requisitos = el.dataset.requisitos
+                        .split(',')
+                        .map(r => r.trim())
+                        .filter(r => r);
+
+                    const aprobadas = new Set([...materias].filter(m => m.classList.contains('aprobada')).map(m => m.id));
+
+                    const puedeAprobarse = requisitos.every(req => aprobadas.has(req));
+
+                    if (requisitos.length === 0 || puedeAprobarse) {
+                        el.classList.toggle('aprobada');
+                        actualizarEstadoMaterias();
+                    } else {
+                        alert('No puedes marcar esta clase como aprobada sin antes aprobar sus requisitos: ' + requisitos.join(', '));
+                    }
+                });
+            });
+
+            filtro.addEventListener('change', () => {
+                const periodoSeleccionado = filtro.value;
+
+                semestres.forEach((sem, index) => {
+                    if (periodoSeleccionado === "todos") {
+                        sem.style.display = 'block';
+                    } else {
+                        const periodoActual = (index + 1).toString();
+                        sem.style.display = (periodoSeleccionado === periodoActual) ? 'block' : 'none';
+                    }
+                });
+            });
+
+            actualizarEstadoMaterias();
+        });
+    </script>
+</body></html>
